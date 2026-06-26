@@ -1,16 +1,52 @@
+WATER_PER_KG = 30
+
+
+def is_number(a):
+    try:
+        float(a)
+        return True
+    except ValueError:
+        return False
+
+
+def age_number():
+    age_num = input("Укажите Ваш возраст (полных лет): ")
+    while True:
+        if is_number(age_num) and 0 < int(age_num) < 120:
+            return int(age_num)
+        else:
+            age_num = input("Укажите только возраст числом: ")
+
+
+def weight_number():
+    weight_num = input("Укажите Ваш вес в кг: ")
+    while True:
+        if is_number(weight_num):
+            return float(weight_num)
+        else:
+            weight_num = input("Укажите только вес числом: ")
+
+
+def height_number():
+    height_num = input("Укажите Ваш рост в м, используя точку (напр. 1.75): ")
+    while True:
+        if is_number(height_num):
+            return float(height_num)
+        else:
+            height_num = input("Укажите только рост числом: ")
+
+
 name = input("Здравствуйте! Напишите Ваше имя: ").capitalize()
-age = int(input("Укажите Ваш возраст (полных лет): "))
-weight = float(input("Укажите Ваш вес в кг: "))
-height = float(input("Укажите Ваш рост в м, используя точку (напр. 1.75): "))
+age = age_number()
+weight = weight_number()
+height = height_number()
 
 bmi_result = weight / (height ** 2)
 bmi = round(bmi_result, 1)
+water_recomend = weight * WATER_PER_KG / 1000
 
-water_per_kg = 30
-water_recomend = weight * water_per_kg / 1000
-
-print(f"""Отчет для пользователя: {name} ({age} г.
+print(f"""Отчет для пользователя: {name} ({age} г).
 Ваш Индекс Массы Тела: {bmi} кг/м²
 Рекомендуемая норма воды: {water_recomend} л. в день
 
-print("Расчет окончен. Будьте здоровы!""")
+Расчет окончен. Будьте здоровы!""")
