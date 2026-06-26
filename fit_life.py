@@ -3,40 +3,14 @@ age = int(input("Укажите Ваш возраст (полных лет): "))
 weight = float(input("Укажите Ваш вес в кг: "))
 height = float(input("Укажите Ваш рост в м, используя точку (напр. 1.75): "))
 
+bmi_result = weight / (height ** 2)
+bmi = round(bmi_result, 1)
 
-def bmi(user_weight, user_height):  # Вычисление ИМТ
-    """Вычисляет индекс массы тела (ИМТ) по росту и весу.
-
-    Параметры:
-        user_height (float): рост в метрах;
-        user_weight (float): вес в килограммах.
-
-    Возвращает:
-        float: ИМТ, округлённый до одного знака после запятой.
-    """
-    bmi = user_weight / (user_height ** 2)
-    return round(bmi, 1)
-
-
-def water_recomendation(user_weight):  # Вычисление нормы воды
-    """Вычисляет рекомендуемую суточную норму воды по весу человека.
-
-    Расчёт ведётся из нормы 30 мл воды на 1 кг веса.
-
-    Параметры:
-        user_weight (float): вес человека в килограммах.
-
-    Возвращает:
-        int: рекомендуемый объём воды в литрах (округлённый до целого числа).
-    """
-    water_per_kg = 30
-    return user_weight * water_per_kg / 1000
-
-bmi_result = bmi(weight, height)
-water_recomend = water_recomendation(weight)
+water_per_kg = 30
+water_recomend = weight * water_per_kg / 1000
 
 print(f"""Отчет для пользователя: {name} ({age} г.
-Ваш Индекс Массы Тела: {bmi_result} кг/м²
+Ваш Индекс Массы Тела: {bmi} кг/м²
 Рекомендуемая норма воды: {water_recomend} л. в день
 
 print("Расчет окончен. Будьте здоровы!""")
